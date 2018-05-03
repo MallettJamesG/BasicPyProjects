@@ -45,7 +45,7 @@ class TheGUI:
         self.close_button = Button(self.frame, text="Clear", command=self.clear)
         self.close_button.pack(side = LEFT)
 
-        self.close_button = Button(self.frame, text="Play Again", command=self.clear)
+        self.close_button = Button(self.frame, text="Play Again", command=self.ask)
         self.close_button.pack(side = LEFT)
 
         self.close_button = Button(self.frame, text="Close", command=master.quit)
@@ -56,22 +56,36 @@ class TheGUI:
 
         if the_q == "no":
             self.labeltext.set("Okay, Goodbye..")
+            self.master.update()
             time.sleep(2)
             self.master.quit
         else:
+            self.labeltext.set("")
+            self.master.update()
+            time.sleep(0.5)
             self.labeltext.set("Let me think for a moment")
-            self.master.update_idletasks()
-            time.sleep(2)
+            self.master.update()
+            time.sleep(1.5)
             self.labeltext.set("---")
-            self.master.update_idletasks()
-            time.sleep(2)
+            self.master.update()
+            time.sleep(0.5)
+            self.labeltext.set("")
+            self.master.update()
+            time.sleep(0.5)
+            self.labeltext.set("---")
+            self.master.update()
+            time.sleep(0.5)
+            self.labeltext.set("")
+            self.master.update()
+            time.sleep(0.5)
             self.labeltext.set(random.choice(responses))
-            self.master.update_idletasks()
+            self.master.update()
             time.sleep(2)
 
     def clear(self):
-        self.labeltext.set("")
-        self.master.update_idletasks()
+        self.labeltext.set("--")
+        self.enterplace.delete(0,'end')
+        self.master.update()
 
 
 root = Tk()
